@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>NotificationSettings</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.btmnotificationagent</string>
+					<key>NotificationsEnabled</key>
+					<false/>
+				</dict>
+			</array>
+			<key>PayloadDisplayName</key>
+			<string>Notifications Payload</string>
+			<key>PayloadIdentifier</key>
+			<string>DFA89311-4FE6-4927-B31E-43452BA507B9</string>
+			<key>PayloadOrganization</key>
+			<string>JAMF Software</string>
+			<key>PayloadType</key>
+			<string>com.apple.notificationsettings</string>
+			<key>PayloadUUID</key>
+			<string>B081AA41-ABA3-42BE-B4A1-A3485A258709</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string></string>
+	<key>PayloadDisplayName</key>
+	<string>Managed background item Notifications</string>
+	<key>PayloadEnabled</key>
+	<true/>
+	<key>PayloadIdentifier</key>
+	<string>906019BB-9609-4CCA-9517-1AA7C8BDAE23</string>
+	<key>PayloadOrganization</key>
+	<string>Ericson Tech</string>
+	<key>PayloadRemovalDisallowed</key>
+	<true/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>906019BB-9609-4CCA-9517-1AA7C8BDAE23</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Apple Remote Desktop Status</displayName>
+<description/>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh
+# EA: ARD / Remote Management status
+# 12-14: reports service state + naprivs perms (old behavior)
+# 15+:   perms via kickstart/naprivs no longer honored; reports service state only
+
+major=$(sw_vers -productVersion | awk -F '.' '{print $1}')
+
+if [ "$major" -lt 12 ] 2&gt;/dev/null; then
+    echo "&lt;result&gt;Pre-12&lt;/result&gt;"
+    exit 0
+fi
+
+# Service state: com.apple.screensharing is loaded in the system domain
+# when Remote Management or Screen Sharing is enabled (works 12 through 26)
+if launchctl print system/com.apple.screensharing &gt;/dev/null 2&gt;&amp;1; then
+    rd="On"
+else
+    rd="Off"
+fi
+
+if [ "$major" -ge 15 ]; then
+    # naprivs is written but ignored by the service on 15+; don't report it
+    echo "&lt;result&gt;${rd}. MDM-managed (all users).&lt;/result&gt;"
+    exit 0
+fi
+
+# 12-14: naprivs still meaningful
+perms=$(dscl . -list /Users dsAttrTypeNative:naprivs 2&gt;/dev/null | grep -w ADMINUSERNAME | awk '{print $1}')
+if [ "$perms" = "ADMINUSERNAME" ]; then
+    echo "&lt;result&gt;${rd}. Set.&lt;/result&gt;"
+else
+    echo "&lt;result&gt;${rd}. None.&lt;/result&gt;"
+fi</scriptContentsMac>
+</extensionAttribute>
